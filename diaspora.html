@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tontio pour la diaspora — Restez au cœur de votre tontine, où que vous soyez</title>
+<meta name="description" content="Cotisez à votre tontine au pays depuis l'étranger, suivez chaque versement en temps réel et gardez le lien avec les vôtres. Transparence totale, paiement Mobile Money. Tontio pour la diaspora camerounaise." />
+<meta name="theme-color" content="#6B2747" />
+<link rel="apple-touch-icon" href="tontio-icon-192.png" />
+<link rel="icon" type="image/png" href="tontio-icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#6B2747; --wine-deep:#4A1A30; --terra:#C9633B; --gold:#E0A93C;
+    --cream:#FAF4EA; --cream2:#F3E8D7; --ink:#2A1620; --muted:#7C6A64; --white:#fff;
+    --shadow:0 18px 50px -22px rgba(74,26,48,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Be Vietnam Pro',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;line-height:1.08;letter-spacing:-.02em;font-weight:800}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  a{text-decoration:none;color:inherit}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .anim{opacity:0;transform:translateY(22px);animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.44s}.d5{animation-delay:.57s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  nav{position:sticky;top:0;z-index:100;background:rgba(250,244,234,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(107,39,71,.10)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.5rem;color:var(--wine)}
+  .logo .glyph{width:30px;height:30px;border-radius:50%;border:3px solid var(--wine);position:relative;animation:spin 9s linear infinite}
+  .logo .glyph::after{content:"";position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  .nav-tag{font-family:'Be Vietnam Pro';font-size:.62rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:#fff;background:var(--gold);padding:3px 9px;border-radius:20px;margin-left:4px}
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-links a{font-weight:500;font-size:.95rem;opacity:.8}
+  .nav-links a:hover{opacity:1;color:var(--wine)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Be Vietnam Pro';font-weight:600;font-size:.95rem;padding:12px 22px;border-radius:40px;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s}
+  .btn-primary{background:var(--wine);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(107,39,71,.6)}
+  .btn-ghost{background:transparent;color:var(--wine);border:1.5px solid rgba(107,39,71,.35)}
+  .btn-ghost:hover{background:var(--wine);color:#fff}
+  .btn-gold{background:var(--gold);color:var(--wine-deep)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(224,169,60,.6)}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+  .hero{position:relative;padding:70px 0 90px;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-180px;left:-160px;width:540px;height:540px;border-radius:50%;background:radial-gradient(circle,rgba(201,99,59,.18),transparent 68%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--terra);background:rgba(201,99,59,.12);padding:7px 14px;border-radius:30px;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.3rem,5.2vw,3.7rem);color:var(--wine-deep)}
+  .hero h1 .hl{color:var(--terra)}
+  .hero p.sub{font-size:1.16rem;color:var(--muted);margin:22px 0 32px;max-width:520px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-note{margin-top:18px;font-size:.86rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .hero-note b{color:var(--wine)}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* distance bridge visual */
+  .bridge{position:relative;background:#fff;border-radius:26px;padding:30px 26px;box-shadow:var(--shadow);border:1px solid rgba(107,39,71,.08);max-width:430px;margin:0 auto;width:100%}
+  .places{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative}
+  .place{text-align:center;flex:1}
+  .place .pin{width:64px;height:64px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;background:var(--cream2)}
+  .place.home .pin{background:var(--wine);color:#fff}
+  .place .city{font-family:'Bricolage Grotesque';font-weight:800;color:var(--wine);font-size:1.05rem}
+  .place .role{font-size:.78rem;color:var(--muted)}
+  .link{flex:1.2;position:relative;height:3px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 16px);align-self:flex-start;margin-top:30px}
+  .coin{position:absolute;top:50%;left:0;width:22px;height:22px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(224,169,60,.25);transform:translate(-50%,-50%);animation:travel 3.4s ease-in-out infinite}
+  @keyframes travel{0%{left:0%}50%{left:100%}100%{left:0%}}
+  .bridge hr{border:none;border-top:1px solid rgba(107,39,71,.10);margin:24px 0 18px}
+  .feed{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .feed .av{width:34px;height:34px;border-radius:50%;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--wine);font-family:'Bricolage Grotesque';font-size:.85rem}
+  .feed .txt{font-size:.84rem;color:var(--ink);flex:1}
+  .feed .ok{font-size:.72rem;color:#fff;background:var(--terra);padding:3px 9px;border-radius:14px;font-weight:600}
+
+  section.block{padding:84px 0}
+  .stitle{text-align:center;max-width:700px;margin:0 auto 52px}
+  .stitle .kick{font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:12px}
+  .stitle h2{font-size:clamp(1.9rem,3.8vw,2.7rem);color:var(--wine-deep)}
+  .stitle p{color:var(--muted);font-size:1.08rem;margin-top:14px}
+
+  .pain{background:var(--wine-deep);color:#f3e8de}
+  .pain .stitle h2{color:#fff}.pain .stitle p{color:#d8c2cc}.pain .stitle .kick{color:var(--gold)}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:28px}
+  .pcard .ic{font-size:1.7rem;margin-bottom:12px}
+  .pcard h3{font-size:1.08rem;color:#fff;margin-bottom:8px;font-weight:600}
+  .pcard p{font-size:.93rem;color:#d8c2cc}
+  @media(max-width:860px){.pgrid{grid-template-columns:1fr}}
+
+  .fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .fcard{background:#fff;border:1px solid rgba(107,39,71,.10);border-radius:20px;padding:30px;display:flex;gap:18px;transition:transform .25s,box-shadow .25s}
+  .fcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .fcard .ic{flex-shrink:0;width:52px;height:52px;border-radius:14px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+  .fcard h3{font-size:1.15rem;color:var(--wine);margin-bottom:8px}
+  .fcard p{color:var(--muted);font-size:.95rem}
+  @media(max-width:860px){.fgrid{grid-template-columns:1fr}}
+
+  .quote{background:linear-gradient(180deg,var(--cream2),var(--cream))}
+  .quote .q{max-width:760px;margin:0 auto;text-align:center}
+  .quote .q .mark{font-family:'Bricolage Grotesque';font-size:4rem;color:var(--gold);line-height:.6}
+  .quote .q p{font-family:'Bricolage Grotesque';font-weight:600;font-size:clamp(1.4rem,3vw,2rem);color:var(--wine-deep);line-height:1.3;margin:10px 0 18px}
+  .quote .q .who{color:var(--muted);font-size:.95rem}
+
+  .cta{background:var(--wine);color:#fff;border-radius:30px;padding:64px 40px;text-align:center;position:relative;overflow:hidden}
+  .cta::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;border:2px dashed rgba(255,255,255,.18);top:-120px;left:-80px;animation:spin 30s linear infinite}
+  .cta::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;border:2px dashed rgba(224,169,60,.3);bottom:-100px;right:-60px;animation:spin 22s linear infinite reverse}
+  .cta h2{font-size:clamp(2rem,4vw,2.7rem);position:relative}
+  .cta p{color:#e9d4dd;margin:16px auto 28px;max-width:540px;position:relative}
+
+  footer{padding:50px 0 40px;text-align:center}
+  footer .logo{justify-content:center;margin-bottom:14px}
+  footer .legal{font-size:.82rem;color:var(--muted);max-width:660px;margin:0 auto 16px}
+  footer .meta{font-size:.85rem;color:var(--muted)}
+  footer a{color:var(--wine);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap nav-in">
+  <a class="logo" href="#"><span class="glyph"></span>Tontio<span class="nav-tag">diaspora</span></a>
+  <div class="nav-links">
+    <a href="#solution">Comment ça aide</a>
+    <a href="#confiance">La confiance</a>
+    <a href="#contact" class="btn btn-primary">Demander une démo</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="eyebrow anim d1">● Pour les Camerounais de l'étranger</span>
+    <h1 class="anim d2">La distance vous éloigne. <span class="hl">Votre tontine vous rapproche.</span></h1>
+    <p class="sub anim d3">Cotisez à votre njangi au pays depuis Paris, Bruxelles ou Montréal. Suivez chaque versement en temps réel et gardez le lien avec les vôtres — sans dépendre de la bonne foi d'un seul.</p>
+    <div class="hero-cta anim d4">
+      <a href="#contact" class="btn btn-primary">Demander une démo →</a>
+      <a href="#solution" class="btn btn-ghost">Comment ça marche</a>
+    </div>
+    <div class="hero-note anim d5">🔒 <span><b>Vous voyez tout, en direct.</b> Chaque cotisation est tracée et visible par tous les membres.</span></div>
+  </div>
+
+  <div class="bridge anim d3">
+    <div class="places">
+      <div class="place"><div class="pin">✈️</div><div class="city">Paris</div><div class="role">Vous</div></div>
+      <div class="link"><span class="coin"></span></div>
+      <div class="place home"><div class="pin">🏠</div><div class="city">Douala</div><div class="role">Votre tontine</div></div>
+    </div>
+    <hr>
+    <div class="feed"><div class="av">V</div><div class="txt">Votre cotisation de <b>50 000 FCFA</b> reçue</div><span class="ok">✓ Payé</span></div>
+    <div class="feed"><div class="av">M</div><div class="txt">Maman a cotisé · 50 000 FCFA</div><span class="ok">✓ Payé</span></div>
+    <div class="feed"><div class="av">T</div><div class="txt">Tour de ce mois → <b>Tonton Jean</b></div><span class="ok" style="background:var(--gold);color:var(--wine-deep)">À venir</span></div>
+  </div>
+</div></header>
+
+<section class="block pain">
+  <div class="wrap">
+    <div class="stitle">
+      <div class="kick">Quand on est loin</div>
+      <h2>Participer à une tontine depuis l'étranger, c'est souvent un casse-tête.</h2>
+    </div>
+    <div class="pgrid">
+      <div class="pcard"><div class="ic">🙈</div><h3>On ne voit rien</h3><p>Vous envoyez l'argent et vous priez. Impossible de savoir où en est vraiment la tontine.</p></div>
+      <div class="pcard"><div class="ic">🤞</div><h3>On dépend d'une personne</h3><p>Tout repose sur la bonne foi du trésorier au pays. Le moindre doute crée des tensions familiales.</p></div>
+      <div class="pcard"><div class="ic">💱</div><h3>Les transferts coûtent cher</h3><p>Entre frais et délais, une partie de votre effort se perd en route à chaque envoi.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="solution">
+  <div class="wrap">
+    <div class="stitle">
+      <div class="kick">Avec Tontio</div>
+      <h2>Aussi présent que si vous étiez au pays.</h2>
+    </div>
+    <div class="fgrid">
+      <div class="fcard"><div class="ic">🌍</div><div><h3>Cotisez d'où vous êtes</h3><p>Versez votre part en quelques secondes depuis votre téléphone, sans transfert compliqué ni intermédiaire.</p></div></div>
+      <div class="fcard"><div class="ic">👁️</div><div><h3>Suivez tout en temps réel</h3><p>Qui a payé, combien, quand, qui reçoit ce mois : vous voyez l'état de la tontine en direct, comme tout le monde.</p></div></div>
+      <div class="fcard"><div class="ic">❤️</div><div><h3>Restez lié aux vôtres</h3><p>La tontine reste un lien familial et communautaire. Tontio le préserve, malgré les kilomètres.</p></div></div>
+      <div class="fcard"><div class="ic">🛡️</div><div><h3>La confiance, sans aveuglette</h3><p>Plus besoin de faire confiance les yeux fermés : la transparence remplace les soupçons.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block quote">
+  <div class="wrap q">
+    <div class="mark">“</div>
+    <p>Avant, j'envoyais l'argent sans jamais savoir si la tontine avançait. Maintenant, je vois tout depuis mon téléphone — comme si j'étais à la réunion.</p>
+    <div class="who">— Une utilisatrice imaginée · à valider auprès de vrais membres de la diaspora</div>
+  </div>
+</section>
+
+<section class="block" id="confiance"><div class="wrap"><div class="cta">
+  <h2>Gardez votre place dans le cercle.</h2>
+  <p>Où que la vie vous ait mené, votre tontine vous attend. Demandez une démonstration de Tontio pour votre groupe.</p>
+  <a href="mailto:contact@atlastech.cm?subject=Démo%20Tontio%20diaspora&body=Bonjour,%20je%20vis%20à%20l'étranger%20et%20je%20participe%20à%20une%20tontine%20au%20pays.%20Je%20souhaite%20une%20démonstration%20de%20Tontio." id="contact" class="btn btn-gold">Demander une démo →</a>
+</div></div></section>
+
+<footer><div class="wrap">
+  <a class="logo" href="#"><span class="glyph"></span>Tontio</a>
+  <p class="meta" style="margin-bottom:16px">Vous représentez : <a href="index.html">un bureau de tontine</a> · <a href="institutions.html">une institution</a> · <b>la diaspora</b></p>
+  <p class="legal">Tontio est un logiciel de gestion de tontines édité par Atlastech Solution. Les paiements transitent par Mobile Money via un prestataire agréé ; Tontio ne détient pas les fonds des membres.</p>
+  <p class="meta">Un produit <b>Atlastech Solution</b> · Douala, Cameroun · <a href="mailto:contact@atlastech.cm">contact@atlastech.cm</a></p>
+</div></footer>
+
+</body>
+</html>

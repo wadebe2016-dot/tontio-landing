@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tontio — Votre tontine, sans cahier, sans relances, sans disputes</title>
+<meta name="description" content="Tontio digitalise votre tontine : suivi automatique des cotisations par Mobile Money, grand livre transparent, tour de rôle géré pour vous. Un produit Atlastech Solution." />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#6B2747" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Tontio" />
+<link rel="apple-touch-icon" href="tontio-icon-192.png" />
+<link rel="icon" type="image/png" href="tontio-icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#6B2747; --wine-deep:#4A1A30; --terra:#C9633B; --gold:#E0A93C;
+    --cream:#FAF4EA; --cream2:#F3E8D7; --ink:#2A1620; --muted:#7C6A64; --white:#fff;
+    --shadow:0 18px 50px -22px rgba(74,26,48,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Be Vietnam Pro',sans-serif;color:var(--ink);background:var(--cream);
+    line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;line-height:1.08;letter-spacing:-.02em;font-weight:800}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  a{text-decoration:none;color:inherit}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(250,244,234,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(107,39,71,.10)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.5rem;color:var(--wine)}
+  .logo .glyph{width:30px;height:30px;border-radius:50%;border:3px solid var(--wine);position:relative;animation:spin 9s linear infinite}
+  .logo .glyph::after{content:"";position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .nav-tag{font-family:'Be Vietnam Pro';font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid rgba(107,39,71,.25);padding:3px 8px;border-radius:20px;margin-left:4px}
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-links a{font-weight:500;font-size:.95rem;color:var(--ink);opacity:.8}
+  .nav-links a:hover{opacity:1;color:var(--wine)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Be Vietnam Pro';font-weight:600;font-size:.95rem;padding:12px 22px;border-radius:40px;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s}
+  .btn-primary{background:var(--wine);color:var(--white)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(107,39,71,.6)}
+  .btn-ghost{background:transparent;color:var(--wine);border:1.5px solid rgba(107,39,71,.35)}
+  .btn-ghost:hover{background:var(--wine);color:#fff}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+  /* HERO */
+  .hero{position:relative;padding:70px 0 90px;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-160px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(201,99,59,.20),transparent 68%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--terra);background:rgba(201,99,59,.12);padding:7px 14px;border-radius:30px;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.4rem,5.4vw,3.9rem);color:var(--wine-deep)}
+  .hero h1 .hl{color:var(--terra);position:relative;white-space:nowrap}
+  .hero p.sub{font-size:1.18rem;color:var(--muted);margin:22px 0 32px;max-width:520px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-note{margin-top:18px;font-size:.86rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .hero-note b{color:var(--wine)}
+  .anim{opacity:0;transform:translateY(22px);animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.44s}.d5{animation-delay:.57s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* CIRCLE VISUAL */
+  .circle-card{position:relative;aspect-ratio:1;max-width:420px;margin:0 auto;width:100%}
+  .ring{position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(107,39,71,.28);animation:spin 26s linear infinite}
+  .ring2{position:absolute;inset:34px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#fff,var(--cream2));box-shadow:var(--shadow)}
+  .pot{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .pot .lbl{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .pot .amt{font-family:'Bricolage Grotesque';font-weight:800;font-size:2.3rem;color:var(--wine);margin:2px 0}
+  .pot .turn{font-size:.82rem;color:var(--terra);font-weight:600}
+  .member{position:absolute;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:600;font-size:1rem;background:#fff;color:var(--wine);box-shadow:0 8px 18px -8px rgba(74,26,48,.4);top:50%;left:50%}
+  .member.active{background:var(--gold);color:var(--wine-deep);box-shadow:0 0 0 6px rgba(224,169,60,.3),0 8px 18px -6px rgba(224,169,60,.6);transform-origin:center}
+  .member.paid::after{content:"✓";position:absolute;bottom:-3px;right:-3px;width:18px;height:18px;background:var(--wine);color:#fff;border-radius:50%;font-size:.62rem;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+
+  /* SECTIONS */
+  section.block{padding:84px 0}
+  .stitle{text-align:center;max-width:680px;margin:0 auto 52px}
+  .stitle .kick{font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:12px}
+  .stitle h2{font-size:clamp(1.9rem,3.8vw,2.7rem);color:var(--wine-deep)}
+  .stitle p{color:var(--muted);font-size:1.08rem;margin-top:14px}
+
+  .problem{background:var(--wine-deep);color:#f3e8de;position:relative}
+  .problem .stitle h2{color:#fff}.problem .stitle p{color:#d8c2cc}.problem .stitle .kick{color:var(--gold)}
+  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:26px}
+  .pcard .ic{font-size:1.6rem;margin-bottom:12px}
+  .pcard h3{font-size:1.06rem;color:#fff;margin-bottom:8px;font-weight:600}
+  .pcard p{font-size:.92rem;color:#d8c2cc}
+  @media(max-width:860px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .fcard{background:#fff;border:1px solid rgba(107,39,71,.10);border-radius:20px;padding:30px;transition:transform .25s,box-shadow .25s}
+  .fcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .fcard .ic{width:50px;height:50px;border-radius:14px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px}
+  .fcard h3{font-size:1.2rem;color:var(--wine);margin-bottom:10px}
+  .fcard p{color:var(--muted);font-size:.96rem}
+  @media(max-width:860px){.fgrid{grid-template-columns:1fr}}
+
+  /* TRUST */
+  .trust{background:linear-gradient(180deg,var(--cream2),var(--cream))}
+  .trust-in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .trust h2{font-size:clamp(1.8rem,3.6vw,2.5rem);color:var(--wine-deep);margin-bottom:18px}
+  .trust ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:16px}
+  .trust li{display:flex;gap:14px;align-items:flex-start}
+  .trust li .chk{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;margin-top:2px}
+  .trust li b{color:var(--wine)}
+  .trust li span{color:var(--muted)}
+  .seal{background:#fff;border-radius:22px;padding:34px;box-shadow:var(--shadow);border:1px solid rgba(107,39,71,.10)}
+  .seal .big{font-family:'Bricolage Grotesque';font-weight:800;font-size:2.6rem;color:var(--terra);line-height:1}
+  .seal hr{border:none;border-top:1px solid rgba(107,39,71,.12);margin:22px 0}
+  .seal .row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .seal .row .d{width:38px;height:38px;border-radius:10px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+  .seal .row p{font-size:.92rem;color:var(--ink)}
+  @media(max-width:860px){.trust-in{grid-template-columns:1fr}}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+  .step{position:relative;padding:30px;background:#fff;border-radius:20px;border:1px solid rgba(107,39,71,.10)}
+  .step::before{counter-increment:s;content:counter(s);font-family:'Bricolage Grotesque';font-weight:800;font-size:3rem;color:var(--cream2);position:absolute;top:14px;right:22px;line-height:1}
+  .step h3{font-size:1.15rem;color:var(--wine);margin-bottom:8px;position:relative}
+  .step p{color:var(--muted);font-size:.95rem;position:relative}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+
+  /* CTA */
+  .cta{background:var(--wine);color:#fff;border-radius:30px;padding:64px 40px;text-align:center;position:relative;overflow:hidden}
+  .cta::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;border:2px dashed rgba(255,255,255,.18);top:-120px;left:-80px;animation:spin 30s linear infinite}
+  .cta::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;border:2px dashed rgba(224,169,60,.3);bottom:-100px;right:-60px;animation:spin 22s linear infinite reverse}
+  .cta h2{font-size:clamp(2rem,4vw,2.8rem);position:relative}
+  .cta p{color:#e9d4dd;margin:16px auto 28px;max-width:520px;position:relative}
+  .cta .btn-gold{background:var(--gold);color:var(--wine-deep);position:relative}
+  .cta .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(224,169,60,.6)}
+
+  /* FOOTER */
+  footer{padding:50px 0 40px;text-align:center}
+  footer .logo{justify-content:center;margin-bottom:14px}
+  footer .legal{font-size:.82rem;color:var(--muted);max-width:640px;margin:0 auto 16px}
+  footer .meta{font-size:.85rem;color:var(--muted)}
+  footer a{color:var(--wine);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#"><span class="glyph"></span>Tontio<span class="nav-tag">par Atlastech</span></a>
+    <div class="nav-links">
+      <a href="#solution">La solution</a>
+      <a href="#confiance">Confiance</a>
+      <a href="#etapes">Comment ça marche</a>
+      <a href="#contact" class="btn btn-primary">Demander une démo</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow anim d1">● Pensé pour les trésoriers &amp; présidents de tontine</span>
+      <h1 class="anim d2">Votre tontine,<br><span class="hl">sans cahier,</span> sans relances, sans disputes.</h1>
+      <p class="sub anim d3">Tontio gère pour vous les cotisations par Mobile Money, le suivi des paiements et le tour de rôle. Vous gardez le contrôle ; le groupe garde la confiance.</p>
+      <div class="hero-cta anim d4">
+        <a href="#contact" class="btn btn-primary">Demander une démo →</a>
+        <a href="#solution" class="btn btn-ghost">Voir comment ça marche</a>
+      </div>
+      <div class="hero-note anim d5">🔒 <span><b>Tontio ne détient pas l'argent.</b> Les cotisations transitent par Mobile Money (MTN, Orange) via un prestataire agréé.</span></div>
+    </div>
+
+    <div class="circle-card anim d3" id="circle">
+      <div class="ring"></div>
+      <div class="ring2"></div>
+      <div class="pot">
+        <span class="lbl">Pot de ce tour</span>
+        <span class="amt">600 000<span style="font-size:1rem"> FCFA</span></span>
+        <span class="turn">→ Bénéficiaire : Awa</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="block problem">
+  <div class="wrap">
+    <div class="stitle">
+      <div class="kick">Le quotidien d'un trésorier</div>
+      <h2>Gérer une tontine à la main, c'est un vrai métier… stressant.</h2>
+      <p>Entre le cahier, les rappels et les comptes à rendre, le trésorier porte tout sur ses épaules.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pcard"><div class="ic">📒</div><h3>Le cahier qui s'égare</h3><p>Registres papier, calculs à la main, erreurs et pages perdues.</p></div>
+      <div class="pcard"><div class="ic">📲</div><h3>Les relances sans fin</h3><p>Courir après les retardataires, appeler, renvoyer des messages chaque mois.</p></div>
+      <div class="pcard"><div class="ic">😟</div><h3>Les disputes de confiance</h3><p>« Qui a payé ? Combien ? Quand ? » Le moindre doute crée des tensions.</p></div>
+      <div class="pcard"><div class="ic">💵</div><h3>Le cash à transporter</h3><p>Garder et déplacer l'argent liquide : un risque permanent.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="solution">
+  <div class="wrap">
+    <div class="stitle">
+      <div class="kick">La solution Tontio</div>
+      <h2>Tout ce qui vous pesait, automatisé.</h2>
+      <p>Vous gardez votre rôle de trésorier — Tontio fait le travail fastidieux à votre place.</p>
+    </div>
+    <div class="fgrid">
+      <div class="fcard"><div class="ic">📥</div><h3>Cotisations Mobile Money</h3><p>Chaque membre cotise depuis son téléphone (MTN, Orange). Le paiement est enregistré tout seul, sans manipulation de cash.</p></div>
+      <div class="fcard"><div class="ic">🔔</div><h3>Relances automatiques</h3><p>Tontio envoie les rappels aux retardataires à votre place. Fini les appels gênants chaque mois.</p></div>
+      <div class="fcard"><div class="ic">📖</div><h3>Grand livre transparent</h3><p>Chaque membre voit en temps réel qui a payé, combien et quand. Plus aucun doute, plus de disputes.</p></div>
+      <div class="fcard"><div class="ic">🔄</div><h3>Tour de rôle géré</h3><p>L'ordre des bénéficiaires et le calendrier sont suivis automatiquement. Personne n'est oublié.</p></div>
+      <div class="fcard"><div class="ic">📊</div><h3>Comptes toujours prêts</h3><p>Le bilan du groupe est à jour à la seconde. Vous rendez compte en un clin d'œil, sans recalculer.</p></div>
+      <div class="fcard"><div class="ic">🌍</div><h3>Membres à distance</h3><p>Un membre voyage ou vit à l'étranger ? Il cotise et suit la tontine depuis n'importe où.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block trust" id="confiance">
+  <div class="wrap trust-in">
+    <div>
+      <div class="kick" style="font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:12px">La confiance d'abord</div>
+      <h2>Votre argent ne dort jamais chez nous.</h2>
+      <p style="color:var(--muted)">Une tontine repose sur la confiance. Tontio est conçu pour la renforcer, pas pour la remplacer.</p>
+      <ul>
+        <li><span class="chk">✓</span><div><b>Tontio ne garde pas les fonds.</b> <span>Les cotisations passent directement par Mobile Money via un prestataire de paiement agréé. Nous sommes le logiciel, pas la banque.</span></div></li>
+        <li><span class="chk">✓</span><div><b>Tout est visible par tous.</b> <span>Chaque mouvement est tracé et consultable par chaque membre. La transparence éteint les soupçons.</span></div></li>
+        <li><span class="chk">✓</span><div><b>Le trésorier garde le contrôle.</b> <span>Vous validez, vous décidez. Tontio exécute et garde la trace de tout.</span></div></li>
+        <li><span class="chk">✓</span><div><b>Données protégées.</b> <span>Accès réservé aux membres du groupe. Pas de tontine publique, pas de fuite.</span></div></li>
+      </ul>
+    </div>
+    <div class="seal">
+      <div class="big">100% tracé</div>
+      <p style="color:var(--muted);margin-top:6px">Chaque franc qui entre et sort laisse une trace.</p>
+      <hr>
+      <div class="row"><div class="d">🏦</div><p>Fonds via prestataire <b>Mobile Money agréé</b></p></div>
+      <div class="row"><div class="d">👁️</div><p>Historique <b>visible par chaque membre</b></p></div>
+      <div class="row"><div class="d">🔐</div><p>Accès <b>limité au groupe</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="etapes">
+  <div class="wrap">
+    <div class="stitle">
+      <div class="kick">Comment ça marche</div>
+      <h2>Lancez votre tontine en 3 étapes.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Créez votre groupe</h3><p>Donnez un nom, fixez le montant de la cotisation, le rythme et l'ordre du tour de rôle.</p></div>
+      <div class="step"><h3>Invitez vos membres</h3><p>Chaque membre rejoint depuis son téléphone et cotise par Mobile Money en quelques secondes.</p></div>
+      <div class="step"><h3>Laissez Tontio gérer</h3><p>Relances, suivi, comptes et tour de rôle : tout tourne tout seul. Vous supervisez, sereinement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Prêt à diriger votre tontine sans stress&nbsp;?</h2>
+      <p>Rejoignez les premiers groupes qui passent au numérique avec Tontio. Demandez une démonstration gratuite pour votre bureau.</p>
+      <a href="mailto:contact@atlastech.cm?subject=Démo%20Tontio&body=Bonjour,%20je%20gère%20une%20tontine%20et%20je%20souhaite%20une%20démonstration%20de%20Tontio." class="btn btn-gold">Demander une démo gratuite →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#"><span class="glyph"></span>Tontio</a>
+    <p class="meta" style="margin-bottom:16px">Vous représentez : <b>un bureau de tontine</b> · <a href="institutions.html">une institution</a> · <a href="diaspora.html">la diaspora</a></p>
+  <p class="legal">Tontio est un logiciel de gestion de tontines édité par Atlastech Solution. Les paiements transitent par Mobile Money via un prestataire agréé&nbsp;; Tontio ne détient pas les fonds des membres.</p>
+    <p class="meta">Un produit <b>Atlastech Solution</b> · Douala, Cameroun · <a href="mailto:contact@atlastech.cm">contact@atlastech.cm</a></p>
+  </div>
+</footer>
+
+<script>
+  // Place member dots around the circle
+  const circle = document.getElementById('circle');
+  const members = [
+    {n:'M', paid:true}, {n:'A', active:true}, {n:'J', paid:true}, {n:'K', paid:true},
+    {n:'P', paid:false}, {n:'S', paid:true}, {n:'D', paid:true}, {n:'F', paid:false}
+  ];
+  const R = 46; // percentage radius
+  members.forEach((m,i)=>{
+    const ang = (-90 + i*(360/members.length)) * Math.PI/180;
+    const x = 50 + R*Math.cos(ang);
+    const y = 50 + R*Math.sin(ang);
+    const el = document.createElement('div');
+    el.className = 'member' + (m.active?' active':'') + (m.paid?' paid':'');
+    el.style.left = x+'%'; el.style.top = y+'%';
+    el.style.transform = 'translate(-50%,-50%)';
+    el.textContent = m.n;
+    circle.appendChild(el);
+  });
+  // PWA : activer l'installation et le hors-ligne
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  }
+</script>
+</body>
+</html>

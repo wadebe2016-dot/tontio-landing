@@ -1,0 +1,17 @@
+{
+  "name": "Tontio — Votre tontine sans stress",
+  "short_name": "Tontio",
+  "description": "Gérez votre tontine : cotisations Mobile Money, suivi automatique, grand livre transparent. Un produit Atlastech Solution.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#6B2747",
+  "theme_color": "#6B2747",
+  "lang": "fr",
+  "icons": [
+    { "src": "tontio-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "tontio-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "tontio-icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
